@@ -67,7 +67,7 @@ var ContactItemView = Backbone.View.extend({
   template: contactItemTemplate,
   events:{
     'click .hideme': 'hide',
-    'click .clickme': 'complete',
+    'click .clickme': 'delete',
   },
   initialize: function(){
   this.listenTo(this.model, 'destroy', this.remove);
@@ -91,7 +91,9 @@ var ContactItemView = Backbone.View.extend({
 
   return this;
 },
-
+  delete: function(){
+    this.model.destroy();
+  },
   hide: function(){
   this.model.set('visible', false);
   },
